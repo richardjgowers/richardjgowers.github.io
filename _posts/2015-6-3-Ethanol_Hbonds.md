@@ -1,12 +1,10 @@
 ---
 layout: post
-title: "eth_hbonds"
+title: "Hydrogen bonding in Ethanol"
 tags:
     - python
     - notebook
 ---
-## Calculating and detecting hydrogen bonds in Ethanol
-
 ### Introduction
 
 This notebook explains how to analyse a molecular dynamics trajectory and count
@@ -40,6 +38,8 @@ get this is via [PyPI][mda-pypi]
 To start with, we will create a Universe object.  This is created from the .gro
 file from our Gromacs simulation, but could be made from practically any format
 of molecular dynamics simulation.
+
+## Getting started
 
 The "guess_bonds" keyword here tells MDAnalysis to guess the bonds between atoms
 when it loads the coordinates.  This is necessary as gro files carry no record
@@ -110,6 +110,7 @@ velocities of the atoms.  These are given as a numpy array.
 print H.positions
 print
 print H.velocities
+
 {% endhighlight %}
 
     [[ 50.79000092   9.5         45.38000107]
@@ -127,6 +128,7 @@ print H.velocities
      [  3.36299992   1.08899999   4.11500025]
      [ 22.60099792  -4.78800011   8.12100029]
      [ -2.07599998  -0.824        1.95700002]]
+
 
 
 All OH atoms can be acceptors in hydrogen bonds, so we'll create an AtomGroup of
@@ -160,16 +162,14 @@ print donors
 
     <AtomGroup with 1473 atoms>
 
-<div class="note">
-  <h5>Recap</h5>
-  <p>
-  At this point we have made 3 AtomGroups, which serve as selections of atoms.
-  These selections are:
-    - `H` - The hydrogens in the system
-    - `acc` - The acceptor atoms
-    - `donors` - The donor atoms
-  </p>
-</div>
+## Recap
+
+At this point we have made 3 AtomGroups, which serve as selections of atoms.
+These selections are:
+
+  - `H` - The hydrogens in the system
+  - `acc` - The acceptor atoms
+  - `donors` - The donor atoms
 
 
 ### Distance calculations
