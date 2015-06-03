@@ -14,8 +14,8 @@ and visualise the hydrogen bonds present.
 
 The files to follow along with this are:
 
- - ![The Gro file]({{ site.url }}/eth_hbonds_files/eth.gro)
- - ![The iPython notebook]({{ site.url }}/eth_hbonds_files/eth_hbonds.ipynb)
+ - [The Gro file]({{ site.url }}/eth_hbonds_files/eth.gro)
+ - [The iPython notebook]({{ site.url }}/eth_hbonds_files/eth_hbonds.ipynb)
 
 Hydrogen bonds are massively important in problems such as self assembly, and
 are formed between three atoms
