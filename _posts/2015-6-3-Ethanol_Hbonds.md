@@ -72,7 +72,7 @@ print u.trajectory
     < GROReader 'eth.gro' with 1 frames of 13257 atoms (0 fixed) >
 
 
-### Selecting atoms
+## Selecting atoms
 
 Firstly, we want to select some atoms, but I can't remember what I called them.
 I can quickly check by looking at the set of the types and names of the atoms.
@@ -162,7 +162,7 @@ print donors
 
     <AtomGroup with 1473 atoms>
 
-## Recap
+### Recap
 
 At this point we have made 3 AtomGroups, which serve as selections of atoms.
 These selections are:
@@ -172,7 +172,7 @@ These selections are:
   - `donors` - The donor atoms
 
 
-### Distance calculations
+## Distance calculations
 
 We want to now calculate distances between hydrogens and acceptors to see who is
 close enough to form a hydrogen bonds.  We could manipulate the position arrays
@@ -348,8 +348,12 @@ print Aidx[hbonds]
     [   0    1    2 ..., 1470 1471 1472]
     [1378 1337  202 ...,   30 1219 1314]
 
+### Recap
 
-### Plotting the bonds
+MDAnalysis.core.distances has lots of useful functions which are designed to handle the numpy arrays that are accessible via MDAnalysis.
+
+
+## Plotting the bonds
 
 Finally, we can try and understand the hydrogen bonds better by plotting the
 distribution of angles and distances.
