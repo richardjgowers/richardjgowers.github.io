@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+PhD student at Manchester University!
 
 ### More Information
 
