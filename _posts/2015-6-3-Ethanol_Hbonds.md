@@ -12,6 +12,11 @@ tags:
 This notebook explains how to analyse a molecular dynamics trajectory and count
 and visualise the hydrogen bonds present.
 
+The files to follow along with this are:
+
+ - ![The Gro file]({{ site.url }}/eth_hbonds_files/eth.gro)
+ - ![The iPython notebook]({{ site.url }}/eth_hbonds_files/eth_hbonds.ipynb)
+
 Hydrogen bonds are massively important in problems such as self assembly, and
 are formed between three atoms
 
@@ -24,9 +29,13 @@ Angstroms and a Acceptor-Hydrogen-Donor angle of greater than 130 degrees.  We
 can therefore easily count and visualise the population of hydrogen bonds using
 simple geometry.
 
-To do this we will use Python, and in particular the MDAnalysis package.
+To do this we will use Python, and in particular the [MDAnalysis][mda] package.
 
-This will require version 0.10.0 or greater of MDAnalysis.
+This will require version 0.10.0 or greater of MDAnalysis.  The easiest way to
+get this is via [PyPI][mda-pypi]
+
+[mda]: http://mdanalysis.org
+[mda-pypi]: https://pypi.python.org/pypi/MDAnalysis
 
 To start with, we will create a Universe object.  This is created from the .gro
 file from our Gromacs simulation, but could be made from practically any format
