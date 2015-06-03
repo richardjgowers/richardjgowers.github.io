@@ -160,6 +160,17 @@ print donors
 
     <AtomGroup with 1473 atoms>
 
+<div class="note">
+  <h5>Recap</h5>
+  <p>
+  At this point we have made 3 AtomGroups, which serve as selections of atoms.
+  These selections are:
+    - `H` - The hydrogens in the system
+    - `acc` - The acceptor atoms
+    - `donors` - The donor atoms
+  </p>
+</div>
+
 
 ### Distance calculations
 
