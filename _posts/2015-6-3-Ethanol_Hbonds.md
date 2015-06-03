@@ -393,11 +393,4 @@ plt.ylabel('Angle (degrees)')
 
 
 
-![png]({{ site.baseurl}}eth_hbonds_files/eth_hbonds_41_1.png)
-
-
-**In []:**
-
-{% highlight python %}
-
-{% endhighlight %}
+![graph_output]({{ site.baseurl}}/eth_hbonds_files/eth_hbonds_41_1.png)
