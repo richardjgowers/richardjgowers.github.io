@@ -14,6 +14,7 @@ and visualise the hydrogen bonds present.
 
 Hydrogen bonds are massively important in problems such as self assembly, and
 are formed between three atoms
+
  - the acceptor, who forms a strong nonbonded interaction with...
  - the hydrogen, who is connected via covalent bond to...
  - the donor
@@ -392,7 +393,7 @@ plt.ylabel('Angle (degrees)')
 
 
 
-![png]({{ site.baseurl}}notebooks/eth_hbonds_files/eth_hbonds_41_1.png)
+![png]({{ site.baseurl}}eth_hbonds_files/eth_hbonds_41_1.png)
 
 
 **In []:**
