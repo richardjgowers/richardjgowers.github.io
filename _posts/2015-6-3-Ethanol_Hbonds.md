@@ -35,11 +35,11 @@ get this is via [PyPI][mda-pypi]
 [mda]: http://mdanalysis.org
 [mda-pypi]: https://pypi.python.org/pypi/MDAnalysis
 
+## Getting started
+
 To start with, we will create a Universe object.  This is created from the .gro
 file from our Gromacs simulation, but could be made from practically any format
 of molecular dynamics simulation.
-
-## Getting started
 
 The "guess_bonds" keyword here tells MDAnalysis to guess the bonds between atoms
 when it loads the coordinates.  This is necessary as gro files carry no record
@@ -94,8 +94,8 @@ object holds an array of Atoms, and does many cool things.....
 **In [34]:**
 
 {% highlight python %}
-H = u.selectAtoms('name HO')
-print H
+Hydrogens= u.selectAtoms('name HO')
+print Hydrogens
 {% endhighlight %}
 
     <AtomGroup with 1473 atoms>
@@ -107,9 +107,9 @@ velocities of the atoms.  These are given as a numpy array.
 **In [33]:**
 
 {% highlight python %}
-print H.positions
+print Hydrogens.positions
 print
-print H.velocities
+print Hydrogens.velocities
 
 {% endhighlight %}
 
@@ -137,8 +137,8 @@ those too
 **In [29]:**
 
 {% highlight python %}
-acc = u.selectAtoms('name OH')
-print acc
+Acceptors = u.selectAtoms('name OH')
+print Acceptors
 {% endhighlight %}
 
     <AtomGroup with 1473 atoms>
@@ -155,9 +155,9 @@ choosing the first (and only) atom which is bonded to each hydrogen.
 {% highlight python %}
 from MDAnalysis.core.AtomGroup import AtomGroup
 
-donors = AtomGroup([at.bonded_atoms[0] for at in H])
+Donors = AtomGroup([at.bonded_atoms[0] for at in Hydrogens])
 
-print donors
+print Donors
 {% endhighlight %}
 
     <AtomGroup with 1473 atoms>
@@ -167,9 +167,9 @@ print donors
 At this point we have made 3 AtomGroups, which serve as selections of atoms.
 These selections are:
 
-  - `H` - The hydrogens in the system
-  - `acc` - The acceptor atoms
-  - `donors` - The donor atoms
+  - `Hydrogens` - The hydrogens in the system
+  - `Acceptors` - The acceptor atoms
+  - `Donors` - The donor atoms
 
 
 ## Distance calculations
@@ -190,7 +190,7 @@ We will pass this the positions of all our hydrogens and acceptors.
 {% highlight python %}
 from MDAnalysis.core.distances import distance_array
 
-d = distance_array(H.positions, acc.positions)
+d = distance_array(Hydrogens.positions, Acceptors.positions)
 
 print type(d)
 print d.shape
@@ -229,7 +229,7 @@ dimensions of the system to the distance_array function!
 **In [132]:**
 
 {% highlight python %}
-d = distance_array(H.positions, acc.positions, box=u.dimensions)
+d = distance_array(Hydrogens.positions, Acceptors.positions, box=u.dimensions)
 
 print d.max()
 {% endhighlight %}
@@ -291,21 +291,39 @@ print Aidx
     [   0    1    2 ..., 1470 1471 1472]
     [1378 1337  202 ...,   30 1219 1314]
 
+### Recap
+
+We've used `distance_array` to calculate the distances between all Hydrogens and Acceptors.
+We then picked out the pairs from this large array which have a distance less than 3.0.
+These have become the index arrays `Hidx` and `Aidx`.
+
+## Calculating the angles
 
 Now we've identified Hydrogen-Acceptor pairs with a small enough distance, we
 want to calculate the Donor-Hydrogen-Acceptor angle.  For this there is another
-handy function, calc_angles.  This calculates the angle  in radians between
+handy function, calc_angles.  This calculates the angle in radians between
 triplets of points.
 
+This is essentially the same as
+
+{%highlight python %}
+# Just pseudocode!
+for a, b, c in zip(positions1, positions2, positions3):
+    angle(a, b, c)
+
+{% endhighlight %}
+
 In the upcoming use, this will calculate the angle between
-donors.positions[Hidx][0], H.positions[Hidx][0] and acc.positions[Aidx][0]
+Donors.positions[Hidx][0], Hydrogens.positions[Hidx][0] and Acceptors.positions[Aidx][0]
+By doing the distance calculation first, we have narrowed down the amount of angle calculations we have to do.
+This is good practice because trigonometry functions are typically more time consuming to perform.
 
 **In [136]:**
 
 {% highlight python %}
 from MDAnalysis.core.distances import calc_angles
 
-a = calc_angles(donors.positions[Hidx], H.positions[Hidx], acc.positions[Aidx], box=u.dimensions)
+a = calc_angles(Donors.positions[Hidx], Hydrogens.positions[Hidx], Acceptors.positions[Aidx], box=u.dimensions)
 
 print a
 print a.shape
@@ -350,7 +368,8 @@ print Aidx[hbonds]
 
 ### Recap
 
-MDAnalysis.core.distances has lots of useful functions which are designed to handle the numpy arrays that are accessible via MDAnalysis.
+We used the index arrays and used these to calculate the angles between specific triples of atoms from our original selections.
+Applying a angle criteria to the resulting angles has given us the final filter for our index arrays to give the identity of all hydrogen bonds in the system.
 
 
 ## Plotting the bonds
