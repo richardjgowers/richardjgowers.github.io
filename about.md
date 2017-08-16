@@ -4,12 +4,5 @@ title: About
 permalink: /about/
 ---
 
-PhD student at Manchester University!
-
-### More Information
-
-A place to include any other types of information that you'd like to include about yourself.
-
-### Contact me
-
-[email@domain.com](mailto:email@domain.com)
+Formally a PhD student at Manchester University,
+now a postdoctoral research assistant at The University of Edinburgh.
