@@ -26,7 +26,7 @@ footer-links:
 # see https://help.github.com/articles/adding-jekyll-plugins-to-a-github-pages-site/
 gems:
   - jekyll-paginate
-  - jekyll-mentions
+#  - jekyll-mentions
   - jekyll-sitemap
   - jekyll-feed
 
