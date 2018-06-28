@@ -10,26 +10,6 @@ as demonstrated by Thor:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Kb1ztV93dsE?start=50&end=60" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-```python
-from IPython.display import YouTubeVideo
-YouTubeVideo('Kb1ztV93dsE', start=50, end=60)
-```
-
-
-
-
-
-        <iframe
-            width="400"
-            height="300"
-            src="https://www.youtube.com/embed/Kb1ztV93dsE?start=50&end=60"
-            frameborder="0"
-            allowfullscreen
-        ></iframe>
-        
-
-
-
 I wanted to play around with some different algorithms for calculating distances (KDTrees, Octrees etc)
 however many of these can't natively handle periodic boundaries, and it's not immediately clear to me if they even can handle them.. Could I hack a tree structure to wrap around onto itself?
 
@@ -62,7 +42,7 @@ import numpy as np
 ```
 
 
-```cython
+```python
 %%cython
 
 cimport cython
